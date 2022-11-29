@@ -1,0 +1,70 @@
+type Usuario {
+    id:ID,
+    nome:String,
+    email:String,
+    senha:String,
+    telefoneFixo:String,
+    usuarioOuvidor:Boolean
+}
+
+type Reclamacao {
+    id:ID,
+    titulo:String,
+    descricao:String,
+    idUsuarioAbertura:String,
+    idAreaResponsavel:String,
+    idUsuarioOuvidor:String,
+    concluido:Boolean,
+    dtAbertura:String
+}
+
+type Area {
+    id:ID,
+    nome:String,
+    descricao:String
+}
+
+type Query {
+    usuario(id:ID):Usuario
+    usuarios:[Usuario]
+
+    area(id:ID):Area
+    areas:[Area]
+
+    reclamacao(id:ID):Reclamacao
+    reclamacoes:[Reclamacao]
+}
+
+type Mutation {
+    saveUsuario(
+        id:ID,
+        nome:String,
+        email:String,
+        senha:String,
+        telefoneFixo:String,
+        usuarioOuvidor: Boolean
+    ):Usuario
+
+    deleteUsuario(id: ID): Boolean
+
+    saveArea(
+        id:ID,
+        nome:String,
+        descricao:String
+    ):Area
+
+    deleteArea(id: ID): Boolean
+
+    saveReclamacao(
+        id:ID,
+        titulo:String,
+        descricao:String,
+        idUsuarioAbertura:String,
+        idAreaResponsavel:String,
+        idUsuarioOuvidor:String,
+        concluido:Boolean,
+        dtAbertura:String
+    ):Reclamacao
+
+    deleteReclamacao(id: ID): Boolean
+}
